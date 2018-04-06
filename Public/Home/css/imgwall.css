@@ -1,0 +1,85 @@
+body {
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 72px;
+}
+
+
+/*轮播图*/
+.carousel-inner .item
+{
+    height: 500px;
+}
+
+.carousel-inner .item img{
+    width: 100%;
+}
+
+.right,.left{
+    font-size: 100px;
+    line-height: 500px;
+}
+
+.main {
+    position: relative;
+}
+.box {
+    padding: 15px 0 0 15px;
+    float: left;
+}
+
+.pic {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.pic img {
+    width: 16rem;
+    height: auto;
+}
+
+
+
+.scene-eye,
+.scene-name {
+    left: 0;
+    right: 0;
+    position: absolute;
+    transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+
+.scene-eye {
+    top: -4rem;
+}
+
+.scene-name {
+    bottom: -4rem;
+}
+
+.main a {
+    display: inline-block;
+    background: #08aba6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    -moz-transition: opacity 0.3s ease-out;
+    -webkit-transition: opacity 0.3s ease-out;
+}
+
+.main a:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+
+
+

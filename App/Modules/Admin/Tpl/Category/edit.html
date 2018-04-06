@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/main.css"/>
+</head>
+<body>
+<include file="Public/head"/>
+<div class="container clearfix">
+    <include file="Public/left"/>
+    <!--/sidebar-->
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list">
+                <i class="icon-home"></i>
+                <a href="__GROUP__/Message/lst?cid=1">首页</a>
+                <span class="crumb-step">&gt;</span>
+                <a href="__URL__/lst"><span class="crumb-name">模块管理</span></a>
+                <span class="crumb-step">&gt;</span>
+                <span class="crumb-name">修改模块</span>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <input type="hidden" name="cid" id="cid" value={$cateInfo.cid}>
+                <table class="insert-tab" width="100%">
+                    <tbody>
+                    <tr>
+                        <th>链接名：</th>
+                        <td>
+                            <input class="common-text required" id="name" name="name" size="30"
+                                   value="{$cateInfo.name}">
+                        </td>
+                    </tr>
+                    <!--<tr>-->
+                        <!--<th><i class="require-red">*</i>验证码：</th>-->
+                        <!--<td>-->
+                            <!--<input type="text" id="verify" name="verify" class="input_style" size="15" value=""/>-->
+                            <!--<img src="__PUBLIC__/captcha.php" id="verify-img" height="30" width="100"-->
+                                 <!--style="cursor:pointer; " onclick="this.src='__PUBLIC__/captcha.php'"/>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input class="btn btn-primary btn6 mr10 edit-link-btn" value="提交" type="button">
+                            <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/main-->
+</div>
+<script>
+    var URL = "{:U(edit)}",
+        cid = "模块管理",
+        PUBLIC = "__PUBLIC__";
+</script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/jq1.8.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/modernizr.min.js"></script>
+<script>
+    $('.edit-link-btn').on('click', function() {
+        var verify_img = $('#verify-img');
+        $.ajax({
+            url: URL,
+            data: {
+                cid: $('#cid').val(),
+                name: $('#name').val(),
+                url: $('#url').val()
+//                verify: $('#verify').val()
+            },
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                if(data.isok == 1)
+                {
+                    alert('修改成功');
+                    location.href = data.url;
+                } else
+                    alert(data.isok);
+                    verify_img.attr('src', PUBLIC + "/captcha.php");
+            }
+        })
+    })
+</script>
+</body>
+</html>

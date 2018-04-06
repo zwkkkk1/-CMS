@@ -1,0 +1,165 @@
+body {
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: none;
+}
+/*轮播图*/
+.carousel-inner .item
+{
+	height: 500px;
+}
+
+.carousel-inner .item img{
+	width: 100%;
+}
+
+.right,.left{
+	font-size: 100px;
+	line-height: 500px;
+}
+
+.top-nav a:hover {
+	color: #08aba6;
+	text-decoration: none;
+}
+
+.banner {
+	color: #fff;
+	width: 40rem;
+	margin: 0 auto;
+}
+
+.banner h1 {
+	width: 28rem;
+	padding: 1.5rem 0;
+	border-top: 0.2rem solid #eee;
+	border-bottom: 0.2rem solid #eee;
+	text-align: center;
+	margin: 30rem auto 3rem;
+}
+
+
+/*美丽古镇*/
+.scene-sec li {
+	float: left;
+	position: relative;
+}
+
+.scene-sec li a {
+	display: inline-block;
+
+	background: #08aba6;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	transition: opacity 0.3s ease-out;
+	-moz-transition: opacity 0.3s ease-out;
+	-webkit-transition: opacity 0.3s ease-out;
+}
+
+.scene-sec li a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+.scene-sec li img {
+	width: 29.5rem;
+	height: 21rem;
+	border: 0.1rem solid #fff;
+}
+
+.scene-sec .scene-eye,
+.scene-sec .scene-name {
+	left: 0;
+	right: 0;
+	position: absolute;
+	transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out;
+}
+
+.scene-sec .scene-eye {
+	top: -4rem;
+}
+
+.scene-sec .scene-name {
+	bottom: -4rem;
+}
+
+
+/*美食文化*/
+
+.food-sec .mes-box {
+	text-align: left;
+	width: 91.26%;
+	margin-bottom: 3rem;
+}
+
+.food-sec .mes-box-img {
+	height: 17rem;
+	width: 23.13%;
+	float: left;
+	margin-right: 3.7rem;
+}
+
+@media screen and (max-width: 1400px){
+	.food-sec .mes-box-img {
+		height: 13rem;
+	}
+}
+
+@media screen and (max-width: 1200px){
+	.food-sec .mes-box-img {
+		height: 11rem;
+	}
+}
+@media screen and (max-width: 960px){
+	.food-sec .mes-box-img {
+		height: 8rem;
+	}
+}
+
+
+.food-sec .mes-box-con {
+	font-size: 1.4rem;
+	color: #9f9e9e;
+	margin-top: 1.5rem;
+}
+
+
+
+
+
+.list-page {
+	padding: 20px 0;
+	text-align: center
+}
+
+.list-page .current {
+	margin: 0 5px;
+	padding: 2px 7px;
+	background: #3E7CAB;
+	color: #fff;
+}
+
+.list-page a {
+	margin: 0 5px;
+	padding: 2px 7px;
+	background: #f3f3f3;
+	color: #333;
+	border: 1px solid #ccc;
+}
+
+
+
+

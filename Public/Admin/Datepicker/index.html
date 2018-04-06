@@ -1,0 +1,52 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Datepicker日期选择器插件 | jQuery日历</title>
+		<link href="css/foundation-datepicker.css" rel="stylesheet" type="text/css">
+		<style>
+		.container { margin:0 auto;  max-width:960px;padding:20px;}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Datepicker日期选择器插件</h1>
+			<h2>Datepicker</h2>
+			<input type="text"  value="" id="demo-1">
+		</div>
+		
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/foundation-datepicker.js"></script>
+		<script src="js/locales/foundation-datepicker.zh-CN.js"></script>		
+		<script>
+		$('#demo-1').fdatepicker({
+			format: 'yyyy-mm-dd',
+		});
+
+		var nowTemp = new Date();
+		var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+		var checkin = $('#dpd1').fdatepicker({
+			onRender: function (date) {
+				return date.valueOf() < now.valueOf() ? 'disabled' : '';
+			}
+		}).on('changeDate', function (ev) {
+			if (ev.date.valueOf() > checkout.date.valueOf()) {
+				var newDate = new Date(ev.date)
+				newDate.setDate(newDate.getDate() + 1);
+				checkout.update(newDate);
+			}
+			checkin.hide();
+			$('#dpd2')[0].focus();
+		}).data('datepicker');
+		var checkout = $('#dpd2').fdatepicker({
+			onRender: function (date) {
+				return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+			}
+		}).on('changeDate', function (ev) {
+			checkout.hide();
+		}).data('datepicker');
+		</script>
+	</body>
+</html>

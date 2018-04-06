@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/main.css"/>
+</head>
+<body>
+<include file="Public/head" />
+<div class="container clearfix">
+    <include file="Public/left" />
+    <!--/sidebar-->
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__MODULE__/Company/lst">首页</a><span class="crumb-step">&gt;</span><span>修改管理员</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="" method="post" id="myform" name="myform" class="edit-adminfrm">
+                <input type="hidden" name="id" id="id" value={$info.id}>
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <tr>
+                                <th>管理员账号：</th>
+                                <td>
+                                    <input class="common-text required" id="username" name="username" size="50" value="{$info.username}" type="text" disabled="disabled">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>原密码：</th>
+                                <td>
+                                    <input class="common-text required" id="password" name="password" size="50" value="" type="password">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>新密码：</th>
+                                <td>
+                                    <input class="common-text required" id="new_pwd" name="new_pwd" size="50" value="" type="password">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>再次输入新密码：</th>
+                                <td>
+                                    <input class="common-text required" id="renew_pwd" name="renew_pwd" size="50" value="" type="password">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit" onclick="return confirm('确定修改密码');">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/main-->
+</div>
+<script>
+var URL = "{:U(edit)}",
+    cid = "管理员管理";
+</script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/jq1.8.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/judge1.js"></script>
+</body>
+</html>

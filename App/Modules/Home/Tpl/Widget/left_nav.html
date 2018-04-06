@@ -1,0 +1,21 @@
+<div class="title">
+    <div class="title-item">{$info.name}</div>
+    <div class="small-item">
+        <img src="__PUBLIC__/Home/images/home.png" class="home"><a href="__URL__/index">首页</a>
+        <if condition="$info.previd neq 0">
+            <img src="__PUBLIC__/Home/images/right.png" class="right"><a href="__URL__/item?cid={$info.previd}">{$info.prevname}</a>
+        </if>
+        <img src="__PUBLIC__/Home/images/right.png" class="right"><a href="__URL__/item?cid={$info.cid}">{$info.name}</a>
+    </div>
+    <img src="__PUBLIC__/Home/images/content-line.png">
+</div>
+<div class="left-content">
+    <ul>
+        {~$smallcate = R('Nav/getSmallCate',array($allPrev),'Widget')}
+        <?php for($i = 0; $i < count($smallcate); $i++) { ?>
+            <a href="__URL__/item?cid=<?php echo $smallcate[$i]['cid'];?>"><li>
+                    <div><?php echo $smallcate[$i]['name'];?></div><img src="__PUBLIC__/Home/images/item.png">
+                </li></a>
+        <?php }?>
+    </ul>
+</div>

@@ -1,0 +1,43 @@
+<td>
+    <if condition="$type eq 1">
+            <select class="cid">
+                <option value="">请选择</option>
+                <volist name="info" id="vo">
+                    <option value="{$vo.cid}">{$vo.name}</option>
+                </volist>
+            </select>
+            <select class="cid">
+                <option value="">请选择</option>
+            </select>
+    <else />
+        <for start="0" end="$step">
+            <if condition = "$cates[$i] neq ''">
+                <select class="cid">
+                    <option value="{$cates[$i]['cid']}">{$cates[$i]['name']}</option>
+                    {~$cateInfo1 = R('Index/getVolistCate',array($cates[$i]['cid']),'Widget')}}
+                    <volist name="cateInfo1" id="vo" key="j">
+                        <option value="{$vo.cid}">{$vo.name}</option>
+                    </volist>
+                </select>
+                <else/>
+                <select class="cid">
+                    <?php if($info[$i]['name'] != '') {?>
+                        <option value="{$info[$i]['cid']}">{$info[$i]['name']}</option>
+                    <?php } ?>
+                    <?php if(!empty($cates[$i - 1])) { ?>
+                        {~$cateInfo2 = R('Index/getSonCates',array($cates[$i-1]['cid']),'Widget')}
+                        <volist name="cateInfo2" id="vo" key="j">
+                            <option value="{$vo.cid}">{$vo.name}</option>
+                        </volist>
+                    <?php } else {?>
+                    <option value="">请选择</option>
+                    <?php } ?>
+                </select>
+            </if>
+
+        </for>
+    </if>
+</td>
+<script>
+    var SELECTCATE = "{:U('sortCate')}";
+</script>

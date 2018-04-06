@@ -1,0 +1,43 @@
+<header>
+    <div class="nav-wrapper">
+        <nav class="top-nav">
+<!--             <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img src="__PUBLIC__/Home/images/logo.png" style="width: 30%">
+                    </a>
+                </div>
+            </div> -->
+            <ul>
+                {~$bigcate = R('Nav/getBigCate',array(1),'Widget')}
+                <?php if($_SESSION['username'] == '') { ?>
+                <li><span class="glyphicon glyphicon-user sidebar-trigger" style="color: #fff"></span></li>
+                <?php } else {?>
+                <li><a href="__APP__/Index/layout"><span class="layout-btn" onclick="return confirm('确定退出');">退出</span></a></li>
+                <li>欢迎回来，<?php echo $_SESSION['username'];?>!</li>
+
+                <?php } ?>
+                <volist name="bigcate" id="vo">
+                    <if condition="$vo.cid eq 1">
+                        <li><a href="__URL__/imgwall">{$vo.name}</a></li>
+                        <else/>
+                        <li><a href="__URL__/item?cid={$vo.cid}">{$vo.name}</a></li>
+                    </if>
+                </volist>
+                <li><a href="__URL__/index">首页</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+
+<script src="__PUBLIC__/Home/js/jq1.8.js"></script>
+<script>
+    $('.search-a').click(function () {
+        $(this).parents('.search-frm').submit();
+        return false;
+    })
+
+</script>
+

@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/main.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/Font-Awesome-3.2.1/css/font-awesome.min.css">
+    <link href="__PUBLIC__/Admin/Datepicker/css/foundation-datepicker.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<include file="Public/head"/>
+<div class="container clearfix">
+    <include file="Public/left"/>
+    <!--/sidebar-->
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list">
+                <i class="icon-home"></i>
+                <a href="__GROUP__/Message/lst?cid=1">首页</a>
+                <span class="crumb-step">&gt;</span>
+                <a href="__URL__/lst"><span class="crumb-name">模块管理</span></a>
+                <span class="crumb-step">&gt;</span>
+                <span class="crumb-name">新增模块</span>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <table class="insert-tab" width="100%">
+                    <input value="{:$_GET['previd']}" type="hidden" id="previd">
+                    <tbody>
+                    <tr>
+                        <th><i class="require-red">*</i>模块：</th>
+                        <td>
+                            <input class="common-text required" id="name" name="name" size="30" type="text" value="">
+                        </td>
+                    </tr>
+
+                    <!--<tr>-->
+                        <!--<th><i class="require-red">*</i>验证码：</th>-->
+                        <!--<td>-->
+                            <!--<input type="text" id="verify" name="verify" class="input_style" size="15" value=""/>-->
+                            <!--<img src="__PUBLIC__/captcha.php" id="verify-img" height="30" width="100"-->
+                                 <!--style="cursor:pointer; " onclick="this.src='__PUBLIC__/captcha.php'"/>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input class="btn btn-primary btn6 mr10 add-cate" value="提交" type="button">
+                            <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/main-->
+</div>
+
+<script>
+    var cid = "模块管理",
+        URL = "{:U('add')}",
+        CONTROLLER = "__URL__",
+        PUBLIC = "__PUBLIC__";
+
+</script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/jq1.8.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/modernizr.min.js"></script>
+<script>
+    $('.add-cate').click(function () {
+        var verify_img = $('#verify-img');
+        $.ajax({
+            url: URL,
+            data: {
+                previd: $('#previd').val(),
+                name: $('#name').val()
+//                verify: $('#verify').val()
+            },
+            dataType: 'json',
+            type: 'post',
+            success: function (data) {
+                if (data.isok == 1) {
+                    alert('添加成功');
+                    location.href = data.url;
+                } else {
+                    alert(data.isok);
+                    verify_img.attr('src', PUBLIC + "/captcha.php");
+                }
+            }
+        })
+    })
+</script>
+</body>
+</html>

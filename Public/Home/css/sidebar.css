@@ -1,0 +1,53 @@
+
+/*侧边栏*/
+.sidebar {
+    position: fixed;
+    background: #333;
+    width: 30rem;
+    right: -30rem;
+    top: 0;
+    bottom: 0;
+    z-index: 2000;
+    color: #fff;
+}
+
+.sidebar h3, .sidebar h4 {
+    display: inline-block;
+}
+
+.sidebar form {
+    width: 80%;
+    margin: 100px auto;
+}
+
+.sidebar .submit-btn {
+    margin: 15px auto
+}
+
+.sidebar a:hover {
+    color: #76ccbc;
+    text-decoration: none;
+}
+
+.sidebar .reg-btn,
+.sidebar .back-btn {
+    float: right;
+    margin-top: 23px;
+}
+
+.sidebar .tip-span {
+    color: red;
+    float: right;
+}
+
+/*遮罩层*/
+.mask {
+    display: none;
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1500;
+}

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/common.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/main.css"/>
+<link rel="stylesheet" href="__PUBLIC__/Admin/Font-Awesome-3.2.1/css/font-awesome.min.css">
+<link rel="stylesheet" href="__PUBLIC__/Admin/css/category.css">
+<body>
+<include file="Public/head"/>
+<div class="container clearfix">
+    <include file="Public/left"/>
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list">
+                <i class="icon-home"></i>
+                <a href="#">首页</a>
+                <span class="crumb-step">&gt;</span>
+                <span class="crumb-name">模块管理</span>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <ul class="cate-outer-ul">
+                {~$bigCateLst = R('Nav/bigCate',array(),'Widget')}
+                <volist name="bigCateLst" id="vo">
+                    <li><p>{$vo.name}
+                        {~$midCateLst = R('Nav/sonCate',array($vo),'Widget')}
+                        <span>[<a href="add?previd={$vo.cid}">添加子模块</a>]
+                        [<a href="edit?cid={$vo.cid}">修改</a>]</span>
+                        <i class="icon-plus"></i></p>
+                        <ul class="cate-middle-ul">
+                            <volist name="midCateLst" id="vo2">
+                                <li><p>{$vo2.name}
+                                    <span>[<a href="add?previd={$vo2.cid}">添加子模块</a>]
+                                    [<a href="edit?cid={$vo2.cid}">修改</a>]
+                                    [<a href="del?cid={$vo2.cid}">删除</a>]</span>
+                                    {~$smallCateLst1 = R('Nav/sonCate', array($vo2), 'Widget')}
+                                    <if condition ="$smallCateLst1 neq ''">
+                                        <i class="icon-plus"></i></p>
+                                    <ul class="cate-inner-ul">
+                                        <volist name="smallCateLst1" id="vo3">
+                                            <li>{$vo3.name}
+                                                <span>[<a href="edit?cid={$vo3.cid}">修改</a>]
+                                                [<a href="del?cid={$vo3.cid}">删除</a>]</span>
+                                            </li>
+                                        </volist>
+                                    </ul>
+                                    </if>
+                                </li>
+                            </volist>
+                        </ul>
+                    </li>
+                </volist>
+            </ul>
+
+        </div>
+    </div>
+    <!--/main-->
+</div>
+<script type="text/javascript" src="__PUBLIC__/Home/js/jq1.8.js"></script>
+<script>
+    var cid = '模块管理',
+        SHOWFILE = "{:U('showfile')}";
+</script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/modernizr.min.js"></script>
+<script src="__PUBLIC__/Admin/js/category.js"></script>
+</body>
+</html>

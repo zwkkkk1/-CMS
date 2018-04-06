@@ -1,0 +1,85 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+a {
+	cursor: pointer
+}
+html {
+	font-size: 62.5%;
+}
+
+body,html {
+	width: 100%;
+	height: 100%;
+	min-width:900px;
+}
+
+body {
+	font-size: 1.7rem;
+}
+
+nav a {
+	cursor: pointer;
+	color: #fff;
+}
+li {
+	list-style: none;
+}
+
+.float-header {
+	background: rgba(0, 0, 0, 0.9);
+	padding: 2.5rem;
+	z-index: 1000;
+}
+
+@media screen and (max-width: 1200px){
+	.float-header {
+		padding: 0rem;
+	}
+
+	html {
+		font-size: 55%;
+	}
+}
+@media screen and (max-width: 1400px){
+	.float-header {
+		padding: 1.5rem;
+	}
+
+}
+section {
+	background: #fff;
+	border-bottom: 0.1rem solid rgb(224, 224, 224);
+	padding: 10rem 10.05rem;
+}
+
+@media screen and (max-width: 1400px){
+	section {
+		padding: 6rem 10.05rem;
+	}
+}
+
+@media screen and (max-width: 1200px){
+	section {
+		padding: 5rem 10.05rem;
+	}
+}
+
+section .container {
+	padding: 0;
+	width: 85.5%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+section .container .container-bt {
+	width: 85.5%;
+	margin: 0 auto;
+	border-bottom: 0.1rem solid rgb(224, 224, 224);
+	margin-bottom: 5rem;
+}
+
+section .container h2 {
+}
+

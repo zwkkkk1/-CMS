@@ -1,0 +1,101 @@
+<!--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-header">-->
+            <!--<a class="navbar-brand" href="#">菜鸟教程</a>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<ul class="nav navbar-nav">-->
+                <!--{~$bigcate = R('Nav/getBigCate2',array(1),'Widget')}-->
+                <!--<li class="active"><a href="__URL__/index">首页</a>-->
+                <!--</li>-->
+                <!--<volist name="bigcate" id="vo">-->
+                    <!--<if condition="$vo.cid eq 1">-->
+                        <!--<li><a href="__URL__/imgwall" class="dropdown-toggle" data-toggle="dropdown">{$vo.name}</a>-->
+                            <!--<ul class="dropdown-menu">-->
+                                <!--<li><a href="#">jmeter</a></li>-->
+                                <!--<li><a href="#">EJB</a></li>-->
+                                <!--<li><a href="#">Jasper Report</a></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                        <!--<else/>-->
+                        <!--<li><a href="__URL__/item?cid={$vo.cid}" class="dropdown-toggle" data-toggle="dropdown">{$vo.name}</a>-->
+                            <!--<ul class="dropdown-menu">-->
+                                <!--<li><a href="#">jmeter</a></li>-->
+                                <!--<li><a href="#">EJB</a></li>-->
+                                <!--<li><a href="#">Jasper Report</a></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                    <!--</if>-->
+                <!--</volist>-->
+                <!--<form class="navbar-form navbar-left">-->
+                    <!--<div class="form-group">-->
+                        <!--<input type="text" class="form-control" placeholder="Search">-->
+                    <!--</div>-->
+                    <!--<button type="submit" class="btn btn-default">Submit</button>-->
+                <!--</form>-->
+            <!--</ul>-->
+            <!--<p class="navbar-text navbar-right">登录\注册</p>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+<nav class="navbar" role="navigation" style="margin-bottom:0px; position:fixed; top:0; z-index:10; width:100%;">
+    <ul class="navbar-nav">
+        {~$bigcate = R('Nav/getBigCate2',array(1),'Widget')}
+        <li class="active"><a href="__URL__/index">首页</a>
+        </li>
+        <volist name="bigcate" id="vo">
+            <if condition="$vo.cid eq 1">
+                <li><a href="__URL__/imgwall">{$vo.name}</a>
+                    {~$smallCate = R('Nav/getSmallCate',array($vo),'Widget')}
+                    <ul class="drop">
+                        <foreach name="smallCate" item="vo1">
+                            <li><a href="__URL__/item?cid={$vo1.cid}">{$vo1.name}</a></li>
+
+                        </foreach>
+                    </ul>
+                </li>
+                <else/>
+                <li><a href="__URL__/item?cid={$vo.cid}">{$vo.name}</a>
+                    {~$smallCate = R('Nav/getSmallCate',array($vo),'Widget')}
+                    <ul class="drop">
+                        <foreach name="smallCate" item="vo1">
+                            <li><a href="__URL__/item?cid={$vo1.cid}">{$vo1.name}</a></li>
+
+                        </foreach>
+                    </ul>
+                </li>
+            </if>
+        </volist>
+    </ul>
+    <div class="search">
+        <form action="__URL__/research" method="get" class="search-frm">
+            <input type="text" name="keywords" class="search-box" placeholder="搜索内容">
+            <a href="#" class="search-a"><span class="glyphicon glyphicon-search search-btn" style="color:#333;"></span></a>
+        </form>
+
+    </div>
+    <div class="user">
+        <?php if($_SESSION['username'] == '') { ?>
+        <span class="sidebar-trigger" style="color: #fff">登录&nbsp/&nbsp注册</span>
+        <?php } else {?>
+        欢迎回来，<?php echo $_SESSION['username'];?>!
+        <a href="__APP__/Index/layout"><span class="layout-btn" onclick="return confirm('确定退出');">退出</span></a>
+        <?php }?>
+    </div>
+</nav>
+
+<script src="__PUBLIC__/Home/js/jq1.8.js"></script>
+<script src="__PUBLIC__/Home/js/public.js"></script>
+<script>
+    $('.search-a').click(function () {
+        $(this).parents('.search-frm').submit();
+        return false;
+    })
+
+    $('.navbar-nav li').hover(function () {
+        $(this).find('.drop').css({'display': 'block'});
+    }, function () {
+        $(this).find('.drop').css({'display': 'none'});
+    })
+
+</script>

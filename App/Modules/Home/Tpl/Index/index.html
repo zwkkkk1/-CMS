@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>旅游资讯发布系统</title>
+</head>
+<link rel="stylesheet" href="__PUBLIC__/Home/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/common.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/index.css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/sidebar.css">
+<body onselectstart="return false" ondragstart="return false">
+<div class="header-wrapper">
+    <div class="white-mask"></div>
+    <include file="Public/Nav"/>
+    <div class="banner">
+        <h1>旅游资讯发布系统</h1>
+        <p>If you don't walk out, you will think that this is the whole world.</p>
+        <p>如果你不出去走走，就会以为眼前的就是全世界。</p>
+        <p style="text-align: right;">————《天堂电影院》</p>
+    </div>
+
+    <!--<div class="banner">-->
+        <!--<img src="__PUBLIC__/Home/images/logo.png" style="width: 80%">-->
+        <!--<h2>旅游资讯平台</h2>-->
+
+    <!--</div>-->
+
+</div>
+
+<div class="content">
+    <section class="scene-sec" style="padding:2rem 10.05rem;">
+        <div class="container">
+            <div class="container-bt">
+                <h2>古镇宣传</h2>
+            </div>
+            <div class="shadow">
+                <video src="__PUBLIC__/Home/audio/index.mp4" controls="controls" id="video"></video>
+                <div class="play"><span class="glyphicon glyphicon-play"></span></div>
+            </div>
+        </div>
+    </section>
+    <section class="scene-sec">
+        <div class="container">
+            <div class="container-bt">
+                <h2>美丽古镇</h2>
+            </div>
+            <ul class="clearfix" style="margin: 0 auto;width: 100%">
+                <volist name="scene" id="vo">
+                    <li>
+                        <img src="{$vo.url}" alt="">
+                        <a href="__URL__/content?id={$vo.id}" class="scene-a">
+                            <span class="glyphicon glyphicon-eye-open scene-eye"></span>
+                            <span class="scene-name">{$vo.title}</span>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </section>
+
+    <section class="food-sec">
+        <div class="container">
+            <div class="container-bt">
+                <h2>美食文化</h2>
+            </div>
+            <volist name="food" id="vo">
+                <a href="__URL__/content?id={$vo.id}">
+                    <div class="mes-box clearfix">
+                        <img src="{$vo.url}" class="mes-box-img">
+                        <div class="mes-box-bt">
+                            {$vo.title}
+                        </div>
+                        <div class="mes-box-con">
+                            {$vo.desc}
+                        </div>
+                    </div>
+                </a>
+            </volist>
+        </div>
+    </section>
+</div>
+
+<include file="Public/foot"/>
+<include file="Public/mask"/>
+
+</body>
+<script>
+    var cid = "模块管理",
+        URL = "{:U('userReg')}",
+        judgeUrl = "{:U('judgeUsername')}",
+        layoutURL = "{:U('layout')}",
+        loginURL = "{:U('userLogin')}",
+        CONTROLLER = "__URL__",
+        PUBLIC = "__PUBLIC__";
+</script>
+<script type="text/javascript" src="__PUBLIC__/Home/REM-unit-polyfill-master/js/rem.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/html5shiv-master/src/html5shiv.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/Respond-master/src/respond.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.9.1.min.js"></script>
+<script src="__PUBLIC__/Home/bootstrap/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Home/js/index.js"></script>
+<script src="__PUBLIC__/Home/js/sidebar.js"></script>
+<script src="__PUBLIC__/Home/js/judge1.js"></script>
+</html>

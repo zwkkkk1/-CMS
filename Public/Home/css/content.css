@@ -1,0 +1,251 @@
+/*清除浮动*/
+.fixed:after{
+	display: table;
+	content: " ";
+	clear: both;
+}
+
+.headImg{
+	width: 100%;
+	height: 500px;
+	background-repeat: no-repeat !important;
+	background-size:cover !important;
+	background-position:center !important;
+}
+
+.content{
+	width: 60%;
+	margin:0 auto;
+	margin-top: 50px;
+	padding-bottom: 70px;
+	border-bottom:1px solid #333;
+}
+
+.content .title{
+	font-size: 3rem;
+	box-sizing: border-box;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #333;
+	width: 100%;
+	text-align: center;
+	margin:0 auto;
+	color: #999;
+}
+
+.content .likeNum{
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	background: #535353;
+	vertical-align: middle;
+	border-radius: 5px;
+	cursor: pointer;
+	float: right;
+	margin-top: 70px;
+	font-size: 0px;
+}
+
+.content .likeNum span{
+	margin-top: 5px;
+}
+
+.content .likeNum .heart{
+	border-right: 1px solid #eee;
+	padding:0 10px;
+	font-size: 30px;
+	color: #999;
+}
+
+.content .likeNum .hearted{
+	border-right: 1px solid #eee;
+	padding:0 10px;
+	color: #f22121;
+	font-size: 30px;
+}
+
+.content .likeNum li{
+	display: inline-block;
+	vertical-align: top;
+	font-size: 20px;
+	height: 40px;
+}
+
+.content .likeNum li:nth-child(2){
+	width: 80px;
+	padding-left: 20px;
+}
+
+.content .likeNum li:nth-child(3){
+	background: #ff5f5f;
+	width: 50px;
+	padding-left: 15px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.message{
+	margin-top: 30px;
+	width: 60%;
+	margin:0 auto;
+}
+
+.message li{
+	display: inline-block;
+	*float: left;
+}
+
+.message li span{
+	color: #666;
+}
+
+.message li+li{
+	margin-left: 3rem;
+}
+
+.content .small-title{
+	height: 40px;
+	line-height: 40px;
+	padding: 0 2rem;
+	font-size: 16px;
+	border-radius: 3rem;
+	margin-top: 70px;
+	display: inline-block;
+	background: #5188eb;
+	color:#fff;
+}
+
+.content .detail{
+	margin-top: 70px;
+	font-size: 16px;
+	letter-spacing: 1px;
+}
+
+/*.content .detail p{*/
+	/*text-indent: 2em;*/
+/*}*/
+
+.content .detail img{
+	width: 80%;
+	margin:0 auto;
+	display: block;
+	padding:30px 0;
+}
+
+/*发表回复*/
+.comment{
+	width: 60%;
+	margin:0 auto;
+	margin-top: 50px;
+}
+
+.comment .left-comment{
+	float: left;
+	margin-left:3%;
+}
+
+.left-comment .user-logo,.reply .user-logo{
+	font-size: 30px;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	line-height: 50px;
+	text-align: center;
+	border:1px solid #666;
+}
+
+.comment .right-comment{
+	width: 85%;
+	display: inline-block;
+	font-size: 18px;
+	float: right;
+	margin-right: 3%;
+}
+
+.comment textarea{
+	padding: 10px;
+	width: 100%;
+	outline: none;
+}
+
+.comment .submit{
+	background: #33a646;
+	color: #fff;
+	height: 4rem;
+	width: 8rem;
+	border:none;
+	float: right;
+	margin-top: 30px;
+}
+
+.comment .submit:hover{
+	background: #0c9d24;
+}
+
+/*其他回复内容*/
+.reply{
+	width: 60%;
+	margin:0 auto;
+	margin-top: 50px;
+}
+
+.reply li{
+	border-top: 1px solid #999;
+	position: relative;
+}
+
+.reply li:last-child{
+	border-bottom: 1px solid #999;
+}
+
+.reply .user-logo{
+	vertical-align: top;
+	margin-top: 20px;
+}
+
+.reply .reply-content{
+	display: inline-block;
+	width: 70%;
+	margin-left: 2rem;
+	margin-top: 20px;
+}
+
+.reply .name{
+	font-size: 18px;
+	font-weight: bold;
+	color: #4d555d;
+}
+
+.reply .word{
+	font-size: 16px;
+	color: #666;
+}
+
+.reply .time{
+	color: #93999f;
+	font-size: 14px;
+	margin-top: 20px;
+}
+
+/*点赞*/
+.reply .good{
+	position: absolute;
+	right: 3rem;
+	bottom: 1rem;
+	vertical-align: bottom;
+}
+
+.reply .glyphicon-thumbs-up{
+	vertical-align: middle;
+	font-size: 18px;
+}
+
+.reply .good-num{
+	font-size: 18px;
+	float: right;
+	margin-top: 2px;
+	margin-left: 5px;
+}
+
+

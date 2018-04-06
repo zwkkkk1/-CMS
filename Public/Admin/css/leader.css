@@ -1,0 +1,41 @@
+/*现任领导*/
+.leader{
+    width: 600px;
+    margin: 0 auto;
+}
+
+.leader li{
+    display: inline-block;
+    width: 300px;
+    height: 225px;
+    background: rgb(244, 244, 244);
+    border: 1px solid #ffffff;
+    box-sizing: border-box;
+    padding-top: 20px;
+    position: relative;
+}
+
+.leader li img{
+    float: left;
+    height: 140px;
+    width: auto;
+    margin-left: 25px;
+}
+
+.leader .text{
+    float:left;
+    line-height: 30px;
+    margin-top: 40px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.leader .edit {
+    position: absolute;
+    bottom: 28%;
+    right: 10%;
+}
+.leader .desc {
+    margin-top: 150px;
+    margin-left: 25px;
+}

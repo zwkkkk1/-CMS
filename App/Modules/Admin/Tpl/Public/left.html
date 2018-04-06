@@ -1,0 +1,34 @@
+<div class="sidebar-wrap">
+        <div class="sidebar-title">
+            <h1>菜单</h1>
+        </div>
+        <div class="sidebar-content">
+            <ul class="sidebar-list">
+                <li>
+                {~$bigCate = R('Nav/bigCate',array(0),'Widget')}
+                    <a href="#"><i class=" icon-tasks" style="margin-right: 15px;margin-left: 20px"></i>常用操作</a>
+                    <ul class="sub-menu">
+                    <foreach name="bigCate" item="vo">
+                        <li class="sub-menu-li"><a href="__GROUP__/Message/lst?cid={$vo.cid}" name="{$vo.cid}">{$vo.name}</a>
+                            <ul class="menu-ul">
+                            {~$smallCate = R('Nav/sonCate',array($vo),'Widget')}
+                                <foreach name="smallCate" item="vo1">
+                                    <if condition="$vo1.name eq '现任领导'">
+                                        <li><a href="__GROUP__/Leader/lst" name="现任领导">{$vo1.name}</a></li>
+                                    <else/>
+                                        <li><a href="__GROUP__/Message/lst?cid={$vo1.cid}" name="{$vo1.cid}">{$vo1.name}</a></li>
+                                    </if>
+                                </foreach>
+                            </ul>
+                        </li>
+                    </foreach>
+                        <li class="sub-menu-li"><a href="__GROUP__/Category/lst" name="模块管理">模块管理</a>
+                    <if condition="$_SESSION['outer_id'] eq 1">
+                        <li class="sub-menu-li"><a href="__GROUP__/Admin/lst?cid=50" name="管理员管理">管理员管理</a></li>
+                    </if>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+

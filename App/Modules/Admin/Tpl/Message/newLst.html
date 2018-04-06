@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/common.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/main.css"/>
+<link rel="stylesheet" href="__PUBLIC__/Admin/Font-Awesome-3.2.1/css/font-awesome.min.css">
+<body>
+<include file="Public/head"/>
+<div class="container clearfix">
+    <include file="Public/left"/>
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list">
+                <i class="icon-home"></i>
+                <a href="__GROUP__/Message/lst?cid=1">首页</a>
+                <span class="crumb-step">&gt;</span>
+                <span class="crumb-name">信息要闻</span>
+            </div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="__URL__/research" method="get" class="research-frm">
+                    <table class="search-tab">
+                        <tr>
+                            <input class="res-cid" type="hidden" name="cid">
+                            <th width="180"><strong>关键字搜索</strong>&nbsp;&nbsp;&nbsp;&nbsp;选择板块:</th>
+                            {:R('Index/selectCategory',array(),'Widget')}
+                            <th width="70">关键字:</th>
+                            <td><input class="common-text" placeholder="关键字" id="keywords" name="keywords" type="text">
+                            </td>
+                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-title">
+                <div class="result-list">
+                    显示最新
+                    <select class="new-date-sel">
+                        <option value="{$newDate}">{$newDate}</option>
+                        <for start="1" end="30">
+                            <option value="{$i}">{$i}</option>
+                        </for>
+                    </select>
+                    天新闻
+                    <button class="new-date-btn">保存</button>
+                </div>
+            </div>
+            <div class="result-content">
+                <table class="result-tab" width="100%">
+                    <tr>
+                        <th width="4%">序号</th>
+                        <th>标题</th>
+                        <th>类型</th>
+                        <th>发布者</th>
+                        <th>发布时间</th>
+                        <th width="20%">操作</th>
+                    </tr>
+                    <volist name="list" id="vo">
+                        <tr>
+                            <td>{$vo.number}</td>
+                            <td><a href="__ROOT__/index.php/Index/content?id={$vo.id}" target="_blank">{$vo.title}</a>
+                            </td>
+                            <td>{$vo.name}</td>
+                            <td>{$vo.author}</td>
+                            <td>{$vo.time}</td>
+                            <td>
+                                <a href="__URL__/edit?cid={$vo.cid}&id={$vo.id}">编辑</a>
+                                <a class="file-set" onclick="messageid1={$vo.id};">设置附件</a>
+                                <a index="{$vo.id}" class="show-btn">
+                                    <if condition="$vo.showstatus eq 1">关闭显示
+                                        <else/>
+                                        显示文章
+                                    </if>
+                                </a>
+                                <a href="__URL__/del?cid={$vo.cid}&id={$vo.id}"
+                                   onclick="return confirm('确定删除该文章')">删除</a>
+                            </td>
+                        </tr>
+                    </volist>
+                </table>
+                <div class="list-page">{$page}</div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+</div>
+<div class="mask"></div>
+<div class="uploadfile-div upload-div">
+    <i class="icon-remove icon-2x upload-no"></i>
+    <table class="upload-tab">
+        <tr>
+            <td>已上传文件</td>
+        </tr>
+        <tr class="file-tr">
+            <td>添加附件</td>
+            <td>
+                <form action="__URL__/uploadfile?cid=<?php echo $_GET['cid'];?>" method="post"
+                      enctype="multipart/form-data" id="uploadfile-form">
+                    <input type="file" name="file" id="file" class="upload-file">
+                    <input type="hidden" name="filetype" id="filetype" value="file">
+                    <input type="hidden" name="messageid" id="messageid">
+                    <input type="hidden" name="filename" id="filename" class="file-name">
+                    <input type="submit" value="上传">
+                    <input type="button" value="重置" class="upload-reset">
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Home/js/jq1.8.js"></script>
+<script>
+    var cid = '信息要闻',
+        SHOWFILE = "{:U('showfile')}",
+        SORTCATE = "{:U('sortCate')}",
+        ROOT = '__ROOT__',
+        CONTROLLER = '__URL__',
+        upload = "__URL__/upload?cid=<?php echo $_GET['cid'];?>";
+</script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/modernizr.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/upload1.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/research.js"></script>
+<script>
+    $('.new-date-btn').on('click', function () {
+        $.ajax({
+            url: "{:U('newLst')}",
+            data: {newdate: $('.new-date-sel').val()},
+            type: 'post',
+            dateType: 'json',
+            success: function (data) {
+                if (data.isok == 1)
+                    alert('保存成功');
+                else
+                    alert(data.isok);
+                location.reload();
+            }
+        })
+    })
+
+    $('.show-btn').on('click', function() {
+        $.ajax({
+            url: "{:U('changeShowStatus')}",
+            data: {id: $(this).attr('index')},
+            dataType: 'json',
+            type: 'post',
+            success: function() {
+                location.reload();
+            }
+        })
+    })
+</script>
+</body>
+</html>
